@@ -36,8 +36,29 @@
     transform: rotate(360deg);
   }
 }
+.clubHeader {
+  color: #c0c0c0;
+  font-size: 40px;
+  font-weight: bold;
+  border-bottom: 3px solid #c0c0c0;
+}
 
 body {
-  background-size: 100%;
+  /* background-size: 100%; */
   background-image: url("https://cutewallpaper.org/22/colt-brawl-stars-wallpapers/1698110570.jpg");
+  /* background-image: linear-gradient(180deg, #0e5fb0, #134b8a);
+  position: relative; */
+  /* background-image: url("https://i.imgur.com/hptPNNH.jpg"); */
+  background-attachment: fixed;
+
+  /* background-image: url("https://i.pinimg.com/originals/d3/30/95/d33095b0da583ed60d77bdd48c71e46c.jpg"); */
+}
+
+.hoverRow {
+  transition: transform 0.2s;
+}
+
+.hoverRow:hover {
+  background: black;
+  transform: scale(1.03);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink as Link } from "react-router-hash-link";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,7 +14,12 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = ["Home", "Club League", "Members"];
 
-function Navigation() {
+function withCommas(x) {
+  if (!x) return;
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function Navigation({ club, mobileView }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -29,7 +35,8 @@ function Navigation() {
       style={{ height: "50px" }}
       src="https://www.brawler.gg/_next/image?url=https%3A%2F%2Fstatic.brawler.gg%2Fimages%2Fgadgets%2Fsilver-bullet-colt-gadget-2.c14294a62c.png&w=128&q=75"
       alt="logo"
-      href="/"
+      component={Link}
+      to="/"
     />
   );
 
@@ -80,26 +87,25 @@ function Navigation() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    component={Link}
+                    to={`/${page.toLowerCase().replace(/\s/g, "")}`}
+                  >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-            >
-              {logo}
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
+                  component={Link}
+                  to={`/${page.toLowerCase().replace(/\s/g, "")}`}
                 >
                   {page}
                 </Button>
@@ -121,7 +127,7 @@ function Navigation() {
                       alt="trophy"
                       style={{ height: "1.2em" }}
                     />{" "}
-                    <b>755,829</b>
+                    <b>{withCommas(club?.trophies)}</b>
                   </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -135,7 +141,8 @@ function Navigation() {
                   </span>
                 </div>
                 <span style={{ color: "lightgray" }}>
-                  MEMBERS: <b>30/30</b>
+                  {mobileView || "MEMBERS: "}
+                  <b>{club?.members?.length}/30</b>
                 </span>
               </div>
             </Box>
