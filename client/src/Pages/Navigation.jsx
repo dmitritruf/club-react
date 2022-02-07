@@ -132,12 +132,12 @@ function Navigation({ club, mobileView }) {
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src="https://img.game8.co/3337703/b9bf5d3619f5d886c2f26f62a94e2d26.png/show"
+                    src="https://cdn.brawlify.com/league/League6.png"
                     alt="mythic"
-                    style={{ height: "2em" }}
+                    style={{ height: "1.6em" }}
                   />
-                  <span style={{ color: "lightgray" }}>
-                    <b>MYTHIC III</b>
+                  <span style={{ marginLeft: 4, color: "lightgray" }}>
+                    <b>MYTHIC II</b>
                   </span>
                 </div>
                 <span style={{ color: "lightgray" }}>
