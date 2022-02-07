@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes as Switch,
+} from "react-router-dom";
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./App.css";
