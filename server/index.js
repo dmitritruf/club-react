@@ -19,9 +19,9 @@ async function boot() {
   app.use(cors());
 
   app.use("/api", controllers);
-  app.use(express.static("./reactapp/build"));
+  app.use(express.static("./client/build"));
   app.get("/*", (req, res) => {
-    const indexFile = path.resolve("./reactapp/build/index.html");
+    const indexFile = path.resolve("./client/build/index.html");
     fs.readFile(indexFile, "utf8", (err, data) => {
       if (err) {
         // console.error('Something went wrong:', err); // eslint-disable-line no-console
