@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-size: 100%;
+  background-image: url("https://cutewallpaper.org/22/colt-brawl-stars-wallpapers/1698110570.jpg");
+}
