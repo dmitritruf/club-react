@@ -15,6 +15,7 @@
     "brawlstars": "^2.0.1",
     "brawlstars.js": "^1.2.2",
     "cors": "^2.8.5",
+    "nodemon": "^2.0.15",
     "querystring": "^0.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon server/index.js",
+    "heroku-postbuild": "npm ci && npm run build"
   },
   "eslintConfig": {
     "extends": [
