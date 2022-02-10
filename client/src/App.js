@@ -15,8 +15,8 @@ const theme = createTheme({
   },
 });
 
-// async function fetchPlayers() {
-//   const response = await fetch("/api/players");
+// async function fetchPlayer(id) {
+//   const response = await fetch(`/api/players/${id}`);
 //   const players = await response.json();
 //   return players;
 // }
@@ -50,10 +50,17 @@ function App() {
       const club = await fetchClub();
       setClub(club);
 
-      // const players = await fetchPlayers()
+      // const players = [];
+      // club?.members?.map(async (i) => {
+      //   const guy = await fetchPlayer(i.tag.substring(1));
+      //   players.push(guy);
+      // });
+      // setPlayers(players);
     }
     boot();
   }, []);
+
+  // console.log(players);
 
   return (
     <ThemeProvider theme={theme}>

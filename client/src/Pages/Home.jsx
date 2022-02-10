@@ -1,5 +1,6 @@
-// import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+// import { HashLink as Link } from "react-router-hash-link";
 
 function withCommas(x) {
   if (!x) return;
@@ -77,22 +78,45 @@ function Home({ club, mobileView }) {
       <Paper variant="outlined" style={{ background: "#121212AF" }}>
         <div style={{ padding: 15 }}>
           <div class="clubHeader text-left">
-            <img
-              src={`https://cdn.brawlify.com/club/${club.badgeId}.png`}
-              alt="badge"
-              style={{ height: "1.1em" }}
-            />
-            <span
-              class="mx-2"
-              style={{ color: "white", fontSize: mobileView && "33px" }}
+            <div
+              style={{
+                display: mobileView || "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
-              {club.name}
-            </span>
-            {mobileView || (
-              <span style={{ fontSize: "25px", color: "darkgray" }}>
-                {club.tag}
-              </span>
-            )}
+              <div>
+                <img
+                  src={`https://cdn.brawlify.com/club/${club.badgeId}.png`}
+                  alt="badge"
+                  style={{ height: "1.1em" }}
+                />
+                <span
+                  class="mx-2"
+                  style={{ color: "white", fontSize: mobileView && "33px" }}
+                >
+                  {club.name}
+                </span>
+
+                {mobileView || (
+                  <span style={{ fontSize: "25px", color: "darkgray" }}>
+                    {club.tag}
+                  </span>
+                )}
+              </div>
+              <Button
+                variant="contained"
+                style={{
+                  marginBottom: mobileView && 10,
+                  width: mobileView && "100%",
+                  backgroundColor: "#5865F2",
+                  color: "#ffffff",
+                }}
+                href={`https://discord.com/invite/uUjSVjFxjU`}
+              >
+                Join the Discord
+              </Button>
+            </div>
           </div>
           <br />
           {memberTable()}
