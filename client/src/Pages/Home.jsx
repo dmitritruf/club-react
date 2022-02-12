@@ -1,6 +1,6 @@
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-// import { HashLink as Link } from "react-router-hash-link";
+import { HashLink as Link } from "react-router-hash-link";
 
 function withCommas(x) {
   if (!x) return;
@@ -35,20 +35,25 @@ function Home({ club, mobileView }) {
             <tr key={count} class="hoverRow">
               {mobileView || <td class="text-center">{count + 1}</td>}
               <td>
-                <img
-                  src={`https://cdn.brawlify.com/profile-low/${i.icon.id}.png`}
-                  alt="badge"
-                  style={{ height: "1.3em" }}
-                />
-                <span
-                  class="mx-2"
-                  style={{
-                    color: `#${i.nameColor.substring(4)}`,
-                    fontWeight: "bold",
-                  }}
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/members/${i.tag.substring(1)}`}
                 >
-                  {i.name}
-                </span>
+                  <img
+                    src={`https://cdn.brawlify.com/profile-low/${i.icon.id}.png`}
+                    alt="badge"
+                    style={{ height: "1.3em" }}
+                  />
+                  <span
+                    class="mx-2"
+                    style={{
+                      color: `#${i.nameColor.substring(4)}`,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {i.name}
+                  </span>{" "}
+                </Link>
               </td>
               {mobileView || (
                 <td style={{ fontWeight: "bold" }}>{roleMap[i.role]}</td>

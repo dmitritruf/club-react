@@ -62,3 +62,7 @@ body {
   background: black;
   transform: scale(1.03);
 }
+
+.noDecoration {
+  text-decoration: none;
+}

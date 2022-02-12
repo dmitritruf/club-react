@@ -15,11 +15,11 @@ const theme = createTheme({
   },
 });
 
-// async function fetchPlayer(id) {
-//   const response = await fetch(`/api/players/${id}`);
-//   const players = await response.json();
-//   return players;
-// }
+async function fetchPlayer(id) {
+  const response = await fetch(`/api/players/${id}`);
+  const players = await response.json();
+  return players;
+}
 
 async function fetchClub() {
   const response = await fetch("/api/clubs/8VYP02GR");
@@ -29,7 +29,7 @@ async function fetchClub() {
 
 function App() {
   const [club, setClub] = React.useState([]);
-  // const [players, setPlayers] = React.useState([]);
+  const [players, setPlayers] = React.useState([]);
   const [state, setState] = React.useState({
     mobileView: false,
   });
@@ -50,17 +50,15 @@ function App() {
       const club = await fetchClub();
       setClub(club);
 
-      // const players = [];
-      // club?.members?.map(async (i) => {
-      //   const guy = await fetchPlayer(i.tag.substring(1));
-      //   players.push(guy);
-      // });
-      // setPlayers(players);
+      const players = [];
+      club?.members?.map(async (i) => {
+        const guy = await fetchPlayer(i.tag.substring(1));
+        players.push(guy);
+      });
+      setPlayers(players);
     }
     boot();
   }, []);
-
-  // console.log(players);
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,8 +84,25 @@ function App() {
             <Route
               path="/members"
               exact
-              element={<Members club={club} mobileView={mobileView} />}
-            />
+              element={
+                <Members
+                  club={club}
+                  members={players}
+                  mobileView={mobileView}
+                />
+              }
+            >
+              <Route
+                path=":id"
+                element={
+                  <Members
+                    club={club}
+                    members={players}
+                    mobileView={mobileView}
+                  />
+                }
+              />
+            </Route>
           </Routes>
         </Router>
       </div>
