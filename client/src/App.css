@@ -73,3 +73,16 @@ body {
 .noDecoration {
   text-decoration: none;
 }
+
+.brawlerGallery {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.brawlerGallery div {
+  flex-basis: 8%;
+}

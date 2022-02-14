@@ -8,6 +8,7 @@ import Navigation from "./Pages/Navigation";
 import Home from "./Pages/Home";
 import ClubLeague from "./Pages/ClubLeague";
 import Members from "./Pages/Members";
+import Brawlers from "./Pages/Brawlers";
 
 const theme = createTheme({
   palette: {
@@ -62,7 +63,6 @@ function App() {
     boot();
   }, []);
 
-  // if (players.length === 0) return null;
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -110,6 +110,17 @@ function App() {
                 }
               />
             </Route>
+            <Route
+              path="/brawlers"
+              exact
+              element={
+                <Brawlers
+                  club={club}
+                  members={players}
+                  mobileView={mobileView}
+                />
+              }
+            />
           </Routes>
         </Router>
       </div>

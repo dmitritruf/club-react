@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
-const pages = ["Home", "Club League", "Members"];
+const pages = ["Home", "Club League", "Members", "Brawlers"];
 
 function withCommas(x) {
   if (!x) return;

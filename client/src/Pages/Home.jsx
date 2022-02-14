@@ -10,6 +10,8 @@ function withCommas(x) {
 
 function capitalize(str) {
   if (str === "MR. P") return "Mr.P";
+  if (str === "8-BIT") return "8-Bit";
+
   const splitStr = str.toLowerCase().split(" ");
   for (let i = 0; i < splitStr.length; i++) {
     // You do not need to check if i is larger than splitStr length, as your for does that for you

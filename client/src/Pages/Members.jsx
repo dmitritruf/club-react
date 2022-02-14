@@ -6,6 +6,7 @@ import Home from "./Home";
 
 function capitalize(str) {
   if (str === "MR. P") return "Mr.P";
+  if (str === "8-BIT") return "8-Bit";
 
   const splitStr = str.toLowerCase().split(" ");
   for (let i = 0; i < splitStr.length; i++) {
@@ -32,7 +33,9 @@ function Members({ members, club, mobileView }) {
       />
     );
   }
-
+  function precise(x) {
+    return x.toPrecision(3);
+  }
   const highestBrawler = () => {
     const brawlers = player.brawlers;
     return brawlers.sort((a, b) => b.trophies - a.trophies)[0];
@@ -44,6 +47,19 @@ function Members({ members, club, mobileView }) {
       return i.power === 11;
     });
     return pEl;
+  };
+
+  const averageTrophies = () => {
+    return Math.round(player.trophies / player.brawlers.length);
+  };
+
+  const averageStat = (stat) => {
+    let pEl = player.brawlers;
+    let sum = 0;
+    pEl = pEl.forEach((i) => {
+      sum += i[stat];
+    });
+    return precise(sum / player.brawlers.length);
   };
 
   // return specific player page
@@ -93,6 +109,18 @@ function Members({ members, club, mobileView }) {
             <br />
             <span style={{ fontSize: "20px", color: "darkgray" }}>
               Highest Trophies: {player.highestTrophies}
+            </span>
+            <br />
+            <span style={{ fontSize: "20px", color: "darkgray" }}>
+              Average Trophies per Brawler: {averageTrophies()}
+            </span>
+            <br />
+            <span style={{ fontSize: "20px", color: "darkgray" }}>
+              Average Rank per Brawler: {averageStat("rank")}
+            </span>
+            <br />
+            <span style={{ fontSize: "20px", color: "darkgray" }}>
+              Average Power Level per Brawler: {averageStat("power")}
             </span>
             <br />
             <span style={{ fontSize: "20px", color: "white" }}>

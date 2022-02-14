@@ -68,6 +68,30 @@ function eloController() {
     }
   });
 
+  router.get("/clubleague", async (req, res) => {
+    // fetch google spreadsheet table
+  });
+
+  router.get("/brawlers", async (req, res) => {
+    try {
+      axios
+        .get(`https://bsproxy.royaleapi.dev/v1/brawlers`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((data) => {
+          res.json(data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
   return router;
 }
 
