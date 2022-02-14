@@ -1,6 +1,7 @@
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { HashLink as Link } from "react-router-hash-link";
+import { TailSpin } from "react-loader-spinner";
 
 function withCommas(x) {
   if (!x) return;
@@ -220,7 +221,13 @@ function Home({ club, members, mobileView, home = true }) {
                     OUR TOP BRAWLERS!{" "}
                     {mobileView || <small>(AVG. TROPHIES)</small>}
                   </h3>
-                  {brawlerList()}
+                  {members.length === 0 ? (
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <TailSpin color="#00BFFF" height={50} width={50} />
+                    </div>
+                  ) : (
+                    brawlerList()
+                  )}
                 </div>
               </div>
             </>
