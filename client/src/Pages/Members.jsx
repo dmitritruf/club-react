@@ -5,6 +5,8 @@ import Paper from "@mui/material/Paper";
 import Home from "./Home";
 
 function capitalize(str) {
+  if (str === "MR. P") return "Mr.P";
+
   const splitStr = str.toLowerCase().split(" ");
   for (let i = 0; i < splitStr.length; i++) {
     // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -21,7 +23,14 @@ function Members({ members, club, mobileView }) {
   const player = members.find((i) => i.tag.substring(1) === id);
 
   if (!id || !player) {
-    return <Home club={club} mobileView={mobileView} />;
+    return (
+      <Home
+        club={club}
+        members={members}
+        mobileView={mobileView}
+        home={false}
+      />
+    );
   }
 
   const highestBrawler = () => {

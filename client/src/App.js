@@ -51,15 +51,18 @@ function App() {
       setClub(club);
 
       const players = [];
-      club?.members?.map(async (i) => {
-        const guy = await fetchPlayer(i.tag.substring(1));
-        players.push(guy);
-      });
+      await Promise.all(
+        club?.members?.map(async (i) => {
+          const guy = await fetchPlayer(i.tag.substring(1));
+          players.push(guy);
+        })
+      );
       setPlayers(players);
     }
     boot();
   }, []);
 
+  // if (players.length === 0) return null;
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -69,12 +72,16 @@ function App() {
             <Route
               path="/"
               exact
-              element={<Home club={club} mobileView={mobileView} />}
+              element={
+                <Home club={club} members={players} mobileView={mobileView} />
+              }
             />
             <Route
               path="/home"
               exact
-              element={<Home club={club} mobileView={mobileView} />}
+              element={
+                <Home club={club} members={players} mobileView={mobileView} />
+              }
             />
             <Route
               path="/clubleague"
