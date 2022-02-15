@@ -1,7 +1,5 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -65,7 +63,6 @@ function Brawlers({ members, club, mobileView }) {
       player: bestMember(i.name),
       brawler: i.name,
     }));
-    console.log(leaders);
 
     leaders.forEach((i) => {
       leaderCounts.set(i.player, (leaderCounts.get(i.player) ?? 0) + 1);
@@ -175,14 +172,9 @@ function Brawlers({ members, club, mobileView }) {
               value={display}
               exclusive
               onChange={handleChange}
-              aria-label="text alignment"
             >
-              <ToggleButton value="brawlers" aria-label="left aligned">
-                BRAWLERS
-              </ToggleButton>
-              <ToggleButton value="leaders" aria-label="centered">
-                LEADERS
-              </ToggleButton>
+              <ToggleButton value="brawlers">BRAWLERS</ToggleButton>
+              <ToggleButton value="leaders">LEADERS</ToggleButton>
             </ToggleButtonGroup>
           </div>
           {display === "brawlers" && (

@@ -16,6 +16,7 @@
     "brawlstars": "^2.0.1",
     "brawlstars.js": "^1.2.2",
     "cors": "^2.8.5",
+    "google-spreadsheet": "^3.2.0",
     "nodemon": "^2.0.15",
     "querystring": "^0.2.1",
     "react": "^17.0.2",
