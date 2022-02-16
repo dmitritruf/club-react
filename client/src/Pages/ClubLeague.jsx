@@ -80,6 +80,14 @@ function ClubLeague({ club, mobileView }) {
     };
     const dataRow = (i, count) => {
       const player = getPlayerByTag(i.tag);
+      if (!player) {
+        return (
+          <tr>
+            <td>{i.name}</td>
+            <td>{trophyRow(i)}</td>
+          </tr>
+        );
+      }
       return (
         <tr key={count} class="hoverRow">
           <td>
@@ -128,6 +136,42 @@ function ClubLeague({ club, mobileView }) {
   const totalsTable = () => {
     const dataRow = (i, count) => {
       const player = getPlayerByTag(i.tag);
+      if (!player)
+        return (
+          <tr>
+            <td>{i.name}</td>
+            <td class="text-center">
+              <div>
+                <img
+                  src="https://cdn.brawlify.com/icon/trophy.png"
+                  alt="trophy"
+                  style={{ height: "0.9em" }}
+                />
+                <span
+                  class="mx-1"
+                  style={{ color: "gold", fontWeight: "bold" }}
+                >
+                  {i.total}
+                </span>
+              </div>
+            </td>
+            <td class="text-center">
+              <div>
+                <img
+                  src="https://cdn.brawlify.com/icon/trophy.png"
+                  alt="trophy"
+                  style={{ height: "0.9em" }}
+                />
+                <span
+                  class="mx-1"
+                  style={{ color: "gold", fontWeight: "bold" }}
+                >
+                  {i.count > 0 ? i.total / i.count : "-"}
+                </span>
+              </div>
+            </td>
+          </tr>
+        );
       return (
         <tr key={count} class="hoverRow">
           <td>
