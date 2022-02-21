@@ -34,8 +34,10 @@ function ClubLeague({ club, mobileView }) {
   const totals = data
     .map((i) => ({
       ...i,
-      total: i.stats.reduce((a, b) => parseInt(a) + parseInt(b), 0),
-      count: i.stats.length,
+      total: i.stats
+        .filter((x) => x !== "")
+        .reduce((a, b) => parseInt(a) + parseInt(b), 0),
+      count: i.stats.filter((x) => x !== "").length,
     }))
     .sort((a, b) => b.total - a.total);
 
@@ -63,18 +65,25 @@ function ClubLeague({ club, mobileView }) {
     const trophyRow = (i) => {
       return (
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          {i.stats.map((x, count) => (
-            <div>
-              <img
-                src="https://cdn.brawlify.com/icon/trophy.png"
-                alt="trophy"
-                style={{ height: "0.9em" }}
-              />
-              <span class="mx-1" style={{ color: "gold", fontWeight: "bold" }}>
-                {x}
-              </span>
-            </div>
-          ))}
+          {i.stats.map((x, count) =>
+            x === "" ? (
+              <></>
+            ) : (
+              <div>
+                <img
+                  src="https://cdn.brawlify.com/icon/trophy.png"
+                  alt="trophy"
+                  style={{ height: "0.9em" }}
+                />
+                <span
+                  class="mx-1"
+                  style={{ color: "gold", fontWeight: "bold" }}
+                >
+                  {x}
+                </span>
+              </div>
+            )
+          )}
         </div>
       );
     };
