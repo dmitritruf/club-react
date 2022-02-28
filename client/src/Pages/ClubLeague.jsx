@@ -175,7 +175,9 @@ function ClubLeague({ club, mobileView }) {
                   class="mx-1"
                   style={{ color: "gold", fontWeight: "bold" }}
                 >
-                  {i.count > 0 ? (i.total / i.count).toFixed(2) : "-"}
+                  {i.count > 0
+                    ? Math.round((i.total / i.count) * 100) / 100
+                    : "-"}
                 </span>
               </div>
             </td>
@@ -224,7 +226,9 @@ function ClubLeague({ club, mobileView }) {
                 style={{ height: "0.9em" }}
               />
               <span class="mx-1" style={{ color: "gold", fontWeight: "bold" }}>
-                {i.count > 0 ? i.total / i.count : "-"}
+                {i.count > 0
+                  ? Math.round((i.total / i.count) * 100) / 100
+                  : "-"}
               </span>
             </div>
           </td>
