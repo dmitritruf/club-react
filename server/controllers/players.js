@@ -109,6 +109,30 @@ function eloController() {
     res.json(response);
   });
 
+  router.get("/clubleagueteams", async (req, res) => {
+    // fetch google spreadsheet table
+    const doc = new GoogleSpreadsheet(
+      "18Ep_8xlQW91c32dtiS1Lt5-QiXS4PFvnamjs27LzR5Q"
+    );
+    await doc.useServiceAccountAuth(creds);
+    await doc.loadInfo();
+
+    const sheet = doc.sheetsByTitle["Teams"];
+    const rows = await sheet.getRows();
+    const data = rows.map((i) => i._rawData);
+
+    const response = [];
+    data.forEach(async (row, count) => {
+      const [team, name, tag] = row;
+      try {
+        response.push({ team, name, tag });
+      } catch (e) {
+        console.error(e);
+      }
+    });
+    res.json(response);
+  });
+
   router.get("/brawlers", async (req, res) => {
     try {
       axios
