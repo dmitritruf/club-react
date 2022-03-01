@@ -97,8 +97,9 @@ function eloController() {
     const data = rows.map((i) => i._rawData);
 
     const response = [];
-    data.forEach(async (row) => {
+    data.forEach(async (row, count) => {
       const [name, tag, ...stats] = row;
+      if (count === 0) return;
       try {
         response.push({ name, tag, stats });
       } catch (e) {

@@ -293,8 +293,8 @@ function ClubLeague({ club, mobileView }) {
               onChange={handleChange}
             >
               <ToggleButton value="totals">TOTALS</ToggleButton>
-
               <ToggleButton value="history">HISTORY</ToggleButton>
+              {/* <ToggleButton value="teams">TEAMS</ToggleButton> */}
             </ToggleButtonGroup>
           </div>
           {display === "history" && historyTable()}

@@ -67,7 +67,9 @@ function Brawlers({ members, club, mobileView }) {
     leaders.forEach((i) => {
       leaderCounts.set(i.player, (leaderCounts.get(i.player) ?? 0) + 1);
     });
-    leaderboard = [...leaderCounts.entries()].sort((a, b) => b[1] - a[1]);
+    leaderboard = [...leaderCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .filter((i) => i[0]);
   }
 
   if (!brawlers.items || brawlers.items.length === 0 || members.length === 0) {
@@ -129,7 +131,7 @@ function Brawlers({ members, club, mobileView }) {
               </td>
               <td>
                 {leaders
-                  .filter((x) => x.player.name === i[0].name)
+                  .filter((x) => x.player?.name === i[0].name)
                   .map((b) => (
                     <img
                       src={`https://cdn.brawlify.com/brawler/${capitalize(
@@ -140,7 +142,7 @@ function Brawlers({ members, club, mobileView }) {
                     />
                   ))}{" "}
                 <span style={{ color: "gold", fontWeight: "bold" }}>
-                  {leaders.filter((x) => x.player.name === i[0].name).length}
+                  {leaders.filter((x) => x.player?.name === i[0].name).length}
                 </span>
               </td>
             </tr>
